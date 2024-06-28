@@ -1,1 +1,28 @@
-<p>administrador works!</p>
+<h1>Lista de Productos</h1>
+
+
+
+
+<table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (producto of Productos; track producto.id) {
+          <tr>
+              <td>{{producto.title}}</td>
+              <td>${{producto.price}}</td>
+              <td>
+                <button >Editar</button>
+                <button >Eliminar</button>
+              </td>
+            </tr>
+      }
+      
+  
+    </tbody>
+  </table>
