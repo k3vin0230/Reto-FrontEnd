@@ -1,28 +1,40 @@
 <h1>Lista de Productos</h1>
+<br>
 
 
+<h4>Añadir / Editar producto</h4>
+<form>
+    
+  <label for="title">Título</label>
+  <input id="title" name="title" [(ngModel)]="producto.title" required />
 
+  <label for="price">Precio</label>
+  <input id="price" name="price" type="number" [(ngModel)]="producto.price" required />
+
+  <button type="submit" (click)="guardarProd()">Añadir</button>
+</form>
+
+<br>
 
 <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (producto of Productos; track producto.id) {
-          <tr>
-              <td>{{producto.title}}</td>
-              <td>${{producto.price}}</td>
-              <td>
-                <button >Editar</button>
-                <button >Eliminar</button>
-              </td>
-            </tr>
-      }
-      
-  
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (producto of Productos; track producto.id) {
+    <tr>
+      <td>{{ producto.title }}</td>
+      <!-- <td>{{ producto.id }}</td> -->
+      <td>${{ producto.price }}</td>
+      <td>
+        <button>Editar</button>
+        <button>Eliminar</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

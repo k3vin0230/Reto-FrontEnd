@@ -17,4 +17,24 @@ export class ProductosService {
   }
 
 
+  guardar(
+    title: string,
+    price: string,
+    token: string
+   ) {
+
+    const fd = new FormData();
+    fd.append("title", title);
+    fd.append("price", price);
+
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.post<any>(this.urlProd, fd, { headers });
+  }
+
+
+
 }
