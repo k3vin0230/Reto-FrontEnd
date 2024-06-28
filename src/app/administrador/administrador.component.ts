@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductosService } from '../servicios/productos.service';
+import { LoginService } from '../servicios/login.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-administrador',
@@ -19,7 +21,7 @@ export class AdministradorComponent implements OnInit{
     price: '',
   };
 
-  constructor(private productosService: ProductosService) {}
+  constructor(private productosService: ProductosService, public loginService: LoginService) {}
 
   ngOnInit(): void {
     this.verProd();
