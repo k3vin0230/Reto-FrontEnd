@@ -34,7 +34,7 @@
       <td>${{ producto.price }}</td>
       <td>
         <button (click)="modoEditar(producto.id, producto.title, producto.price)">Editar</button>
-        <button>Eliminar</button>
+        <button (click)="eliminarProducto(producto.id)">Eliminar</button>
       </td>
     </tr>
     }

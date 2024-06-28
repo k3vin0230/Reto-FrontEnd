@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { log } from 'console';
 
 
 
@@ -51,6 +52,20 @@ export class ProductosService {
     });
 
     return this.http.put<any>(`${this.urlProd}/update/${id}`, fd, {headers});
+  }
+
+  eliminarProd(
+    id: string,
+    token: string) {
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+  
+    
+
+    return this.http.delete<any>(`${this.urlProd}/delete/${id}`);
   }
 
 }
