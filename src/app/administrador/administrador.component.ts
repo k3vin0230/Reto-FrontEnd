@@ -46,6 +46,8 @@ export class AdministradorComponent implements OnInit{
           text: '',
         });
         this.verProd();
+        this.producto.title = "",
+        this.producto.price = ""
       },
       (err)=>{
         Swal.fire({
@@ -55,6 +57,44 @@ export class AdministradorComponent implements OnInit{
         });
       }
     );
+  }
+
+  editarProd() {
+      const token = localStorage.getItem('token') || '';
+
+      this.productosService
+        .modificar(
+          this.producto.id,
+          this.producto.title,
+          this.producto.price,
+          token
+        )
+        .subscribe(
+          (res) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Producto modificado',
+              text: '',
+            });
+            this.verProd();
+            this.producto.id = "",
+            this.producto.title = "",
+            this.producto.price = ""
+          },
+          (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al modificar el producto',
+              text: 'Intenta de nuevo',
+            });
+          }
+        );
+  }
+
+  modoEditar(id:string, title:string, price:string){
+    this.producto.id = id
+    this.producto.title = title
+    this.producto.price = price
   }
 
 }

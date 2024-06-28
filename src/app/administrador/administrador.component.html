@@ -2,17 +2,19 @@
 <br>
 
 
-<h4>Añadir / Editar producto</h4>
-<form>
-    
-  <label for="title">Título</label>
-  <input id="title" name="title" [(ngModel)]="producto.title" required />
+    <h4>Añadir / Editar producto</h4>
+    <form>
+        <input id="id" name="id" [(ngModel)]="producto.id" hidden/>
+        
+        <label for="title">Título</label>
+        <input id="title" name="title" [(ngModel)]="producto.title" required />
 
-  <label for="price">Precio</label>
-  <input id="price" name="price" type="number" [(ngModel)]="producto.price" required />
+        <label for="price">Precio</label>
+        <input id="price" name="price" type="number" [(ngModel)]="producto.price" required />
 
-  <button type="submit" (click)="guardarProd()">Añadir</button>
-</form>
+        <button type="submit" (click)="guardarProd()">Añadir</button>
+        <button type="submit" (click)="editarProd()">Editar</button>
+    </form>
 
 <br>
 
@@ -31,7 +33,7 @@
       <!-- <td>{{ producto.id }}</td> -->
       <td>${{ producto.price }}</td>
       <td>
-        <button>Editar</button>
+        <button (click)="modoEditar(producto.id, producto.title, producto.price)">Editar</button>
         <button>Eliminar</button>
       </td>
     </tr>
