@@ -1,1 +1,27 @@
-<p>usuario works!</p>
+<div class="catalogo-container">
+    <h1>Catálogo de Productos</h1>
+    
+    <div class="filter-container">
+      <label for="sortOrder">Ordenar por precio:</label>
+      <select id="sortOrder" [(ngModel)]="clasificar">
+        <option value="desc">Mayor precio</option>
+        <option value="asc">Menor Precio</option>
+      </select>
+      
+      <label for="filterName">Buscar por nombre:</label>
+      <input type="text" id="filterName" [(ngModel)]="nombreFiltrar" placeholder="Nombre del producto" />
+      
+      <button (click)="aplicarFiltros()">Aplicar Filtros</button>
+    </div>
+    
+    <div class="products-container">
+        @for (producto of productosFiltrados; track producto.id) {
+            <div class="product-card">
+                <img [src]="producto.thumbnail" alt="{{ producto.title }}">
+                <h2>{{ producto.title }}</h2>
+                <p>Precio: ${{ producto.price }}</p>
+              </div>
+        }
+    </div>
+  </div>
+  
